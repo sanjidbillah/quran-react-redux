@@ -1,0 +1,42 @@
+:root{
+    --raduis :10px
+}
+
+.main{
+    margin-left: 20px;
+    height: 100vh;
+    overflow: scroll;
+    text-align: left
+}
+.active{
+    background-color: #03675E !important;
+}
+.main .item{
+    height: 85px;
+    width: 270px;
+    background-color: #008478;
+    border-radius: var(--raduis);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: flex;
+}
+
+.number{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #5FB787;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+.name{
+    color: white;
+   
+}
+
