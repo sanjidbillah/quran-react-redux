@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
 export const slice = createSlice({
     name: 'surah',
     initialState: {
@@ -12,12 +13,17 @@ export const slice = createSlice({
             state.surahNameList = action.payload;
 
         },
-        setSeletedIndex: (state, action) => {
+        SetSeletedIndex: (state, action) => {
+
+          
+
             state.selectedSurah = action.payload
         }
     }
 })
-export const { fetchSurah,setSeletedIndex } = slice.actions;
+
+
+export const { fetchSurah, SetSeletedIndex } = slice.actions;
 
 export const getSurahList = state => state.surah.surahNameList;
 export const getSeletectedIndex = state => state.surah.selectedSurah;
