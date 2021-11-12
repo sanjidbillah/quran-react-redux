@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getSurahList, fetchSurah, getSeletectedIndex, SetSeletedIndex } from './surah_list_slicer'
-import { remove,fetchAyat } from '../ayat/ayat_slicer'
+import { remove, fetchAyat,setName } from '../ayat/ayat_slicer'
 import React, { useEffect } from 'react';
 import classes from './surah_list.module.css'
 export function SurahListView() {
@@ -22,7 +22,7 @@ export function SurahListView() {
     return (
 
         <div className={classes.main}>
-            {surahList.map((e) =>
+            {surahList.map((e,i) =>
 
                 e.number === selectedIndex ?
                     <div className={[classes.item, classes.active].join(' ')}>
@@ -35,7 +35,8 @@ export function SurahListView() {
                     <div onClick={() => {
                         dispatch(SetSeletedIndex(e.number));
                         dispatch(remove());
-                        fetch('https://api.alquran.cloud/v1/surah/2').then(res => res.json()).then((data) => {
+                        fetch('https://api.alquran.cloud/v1/surah/' + e.number + '').then(res => res.json()).then((data) => {
+                            dispatch(setName(data['data']['englishName']))
                             dispatch(fetchAyat(data['data']['ayahs']));
                         });
                     }} className={classes.item}>
