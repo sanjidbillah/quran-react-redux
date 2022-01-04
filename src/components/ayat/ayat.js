@@ -1,26 +1,15 @@
 
-import { useSelector, useDispatch } from 'react-redux';
-import React, { useEffect } from 'react';
-import { fetchAyat, getAyatList,setName,getName } from './ayat_slicer';
+import { useSelector } from 'react-redux';
 import classes from './ayat.module.css'
 export default function Ayat() {
-    const dispatch = useDispatch();
-    const getAyat = useSelector(getAyatList)
-    const getN = useSelector(getName)
+    const getAyat = useSelector(state => state.ayat)
+    const surahName = useSelector(state => state.surahName)
 
-    useEffect(() => {
 
-        fetch('https://api.alquran.cloud/v1/surah/1').then(res => res.json()).then((data) => {
-            dispatch(setName(data['data']['englishName']))
-            dispatch(fetchAyat(data['data']['ayahs']));
-        });
-    },
-        // eslint-disable-next-line
-        []);
     return (
         <div className={classes.main}>
-            <div className={classes.title}><p>{getN}</p></div>
-            {getAyat.map((e) => <div className={classes.ayatBloc}>
+            <div className={classes.title}><p>{surahName}</p></div>
+            {getAyat.map((e, i) => <div key={i} className={classes.ayatBloc}>
                 <p className={classes.number}>{e.numberInSurah}</p>
                 <p className={classes.ayat}>{e.text}</p>
             </div>)}
