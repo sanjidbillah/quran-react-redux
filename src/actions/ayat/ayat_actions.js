@@ -10,5 +10,14 @@ export const getAyat = data => {
     }
 }
 
+export const getSecondary = data => {
+    return {
+        type: actions.getSecondary,
+        payload: {
+            data: data
+        }
+    }
+}
+
 
 
