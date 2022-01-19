@@ -10,10 +10,13 @@ export default function Ayat() {
 
         <div className={classes.main}>
             <div className={classes.title}><p>{surahName}</p></div>
-            {getAyat.map((e, i) => <div key={i} className={classes.ayatBloc}>
+            {getSecondary.map((e, i) => <div key={i} className={classes.ayatBloc}>
                 <p className={classes.number}>{e.numberInSurah}</p>
-                <p className={classes.ayat}>{e.text}</p>
-                {getSecondary.length !== 0 ? <p>0</p> : '1'}
+                <div className={classes.ayatGroup}>
+                    {<p className={classes.ayat}>{getAyat[i].text}</p>}
+                    <p className={classes.secondary}>{e.text}</p>
+                </div>
+
 
             </div>)}
 

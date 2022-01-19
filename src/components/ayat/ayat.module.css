@@ -26,7 +26,14 @@
     margin-left: 40px;
     margin-right: 40px;
 }
+.ayatGroup{
+   display: block; 
+}
 .ayat{
+  
+    text-align: right;
+}
+.secondary{
   
     text-align: right;
 }

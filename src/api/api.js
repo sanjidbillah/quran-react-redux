@@ -3,8 +3,8 @@ import QPath from '../utility/path';
 import * as surahEvent from '../actions/surah/surah_actions';
 import * as ayatEvent from '../actions/ayat/ayat_actions'
 export default class QApi {
-    static async getSecondaryAayat(dispatch) {
-        const res = await fetch(QPath.secondaryAyat);
+    static async getSecondaryAayat(dispatch, number) {
+        const res = await fetch(QPath.secondaryAyat(number));
         const data = await res.json();
         dispatch && dispatch(ayatEvent.getSecondary(data['data']['ayahs']))
     };
@@ -13,7 +13,7 @@ export default class QApi {
         const data = await res.json();
 
         dispatch && dispatch(ayatEvent.getAyat(data['data']['ayahs']))
-        QApi.getSecondaryAayat(dispatch);
+        QApi.getSecondaryAayat(dispatch, number);
     };
     static async getInitialSurah(dispatch) {
         const res = await fetch(QPath.surahList);
